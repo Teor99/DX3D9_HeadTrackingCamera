@@ -147,6 +147,8 @@ void render_frame() {
     output << std::setprecision(2);
 
     output
+        << "UDP server status:" << std::endl
+        << "  " << udpServerGetStatusInfo() << std::endl
         << "Camera view matrix:" << std::endl
         << "  " << viewMatrix._11 << "\t" << viewMatrix._12 << "\t" << viewMatrix._13 << "\t" << viewMatrix._14 << std::endl
         << "  " << viewMatrix._21 << "\t" << viewMatrix._22 << "\t" << viewMatrix._23 << "\t" << viewMatrix._24 << std::endl

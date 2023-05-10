@@ -9,5 +9,6 @@ struct CameraCoordsPacket {
 	double roll = 0.0;
 };
 
-int udpServer();
+void udpServer();
 void stopUdpServer();
+std::string  udpServerGetStatusInfo();
