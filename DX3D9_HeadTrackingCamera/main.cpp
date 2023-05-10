@@ -16,6 +16,7 @@ LPDIRECT3DDEVICE9 d3ddev = NULL;
 LPDIRECT3DVERTEXBUFFER9 v_buffer = NULL;
 ID3DXFont* g_pFont;
 D3DXMATRIX startViewMatrix;
+D3DXMATRIX projectionMatrix;
 
 struct CUSTOMVERTEX {
     FLOAT x, y, z;
@@ -115,7 +116,6 @@ void init_camera() {
 
     D3DXMatrixLookAtLH(&startViewMatrix, &eye, &at, &up);
 
-    D3DXMATRIX projectionMatrix;
     D3DXMatrixPerspectiveFovLH(&projectionMatrix, D3DX_PI / 4, 1.0f, 0.1f, 1000.0f);
     d3ddev->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
 }
@@ -152,6 +152,11 @@ void render_frame() {
         << "  " << viewMatrix._21 << "\t" << viewMatrix._22 << "\t" << viewMatrix._23 << "\t" << viewMatrix._24 << std::endl
         << "  " << viewMatrix._31 << "\t" << viewMatrix._32 << "\t" << viewMatrix._33 << "\t" << viewMatrix._34 << std::endl
         << "  " << viewMatrix._41 << "\t" << viewMatrix._42 << "\t" << viewMatrix._43 << "\t" << viewMatrix._44 << std::endl
+        << "Projection matrix:" << std::endl
+        << "  " << projectionMatrix._11 << "\t" << projectionMatrix._12 << "\t" << projectionMatrix._13 << "\t" << projectionMatrix._14 << std::endl
+        << "  " << projectionMatrix._21 << "\t" << projectionMatrix._22 << "\t" << projectionMatrix._23 << "\t" << projectionMatrix._24 << std::endl
+        << "  " << projectionMatrix._31 << "\t" << projectionMatrix._32 << "\t" << projectionMatrix._33 << "\t" << projectionMatrix._34 << std::endl
+        << "  " << projectionMatrix._41 << "\t" << projectionMatrix._42 << "\t" << projectionMatrix._43 << "\t" << projectionMatrix._44 << std::endl
         << "OpenTrack data:" << std::endl
         << "    x:\t" << cc.x << std::endl
         << "    y:\t" << cc.y << std::endl
